@@ -17,9 +17,15 @@ function Chutar() {
     } else {
       elementoResultado.innerHTML = "Você errou!";
       if (chute < numeroSecreto) {
-        elementoResultado.innerHTML = " Voce errou, numero é maior! ";
+        elementoResultado.innerHTML =
+          " Voce errou, numero é maior! <br> Você possui " +
+          (tentativas - 1) +
+          " tentativas restantes";
       } else {
-        elementoResultado.innerHTML = "Voce errou, o numero é menor!";
+        elementoResultado.innerHTML =
+          "Voce errou, o numero é menor!<br> Você possui " +
+          (tentativas - 1) +
+          " tentativas restantes";
       }
     }
     tentativas--;
@@ -28,7 +34,7 @@ function Chutar() {
     elementoResultado.innerHTML =
       "<br> <br>" +
       "Numero de tentativas Excedidas" +
-      "<br> O numero era" +
+      "<br> O numero era > " +
       numeroSecreto;
   }
 }
