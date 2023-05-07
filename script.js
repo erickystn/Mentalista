@@ -26,6 +26,9 @@ function Chutar() {
   } else {
     document.getElementById("bouton").setAttribute("disabled", "disabled");
     elementoResultado.innerHTML =
-    "<br> <br>" + "Numero de tentativas Excedidas";
+      "<br> <br>" +
+      "Numero de tentativas Excedidas" +
+      "<br> O numero era" +
+      numeroSecreto;
   }
 }
