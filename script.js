@@ -16,19 +16,20 @@ function Chutar() {
       console.log("Digite numeros de 0 a 10!");
     } else {
       elementoResultado.innerHTML = "Você errou!";
+      tentativas--;
       if (chute < numeroSecreto) {
         elementoResultado.innerHTML =
           " Voce errou, numero é maior! <br> Você possui " +
-          (tentativas - 1) +
+          (tentativas) +
           " tentativas restantes";
       } else {
         elementoResultado.innerHTML =
           "Voce errou, o numero é menor!<br> Você possui " +
-          (tentativas - 1) +
+          (tentativas) +
           " tentativas restantes";
       }
     }
-    tentativas--;
+    
   } else {
     document.getElementById("bouton").setAttribute("disabled", "disabled");
     elementoResultado.innerHTML =
