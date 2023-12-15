@@ -3,6 +3,13 @@ var tentativas = 3;
 
 function Chutar() {
   var elementoResultado = document.getElementById("resultado");
+  if (chute < 0 || chute > 10 || chute == "" || chute == undefined) {
+    elementoResultado.innerHTML = "Digite numeros de 0 a 10";
+    console.log("Digite numeros de 0 a 10!"); 
+    return;
+  }
+  
+  tentativas--;
 
   if (tentativas > 0) {
     var chute = parseInt(document.getElementById("valor").value);
@@ -11,12 +18,9 @@ function Chutar() {
       elementoResultado.innerHTML = "Você Acertou!";
       console.log("Acertou!");
       tentativas = 0;
-    } else if (chute < 0 || chute > 10 || chute == "" || chute == undefined) {
-      elementoResultado.innerHTML = "Digite numeros de 0 a 10";
-      console.log("Digite numeros de 0 a 10!");
-    } else {
+    }else {
       elementoResultado.innerHTML = "Você errou!";
-      tentativas--;
+      
       if (chute < numeroSecreto) {
         elementoResultado.innerHTML =
           " Voce errou, numero é maior! <br> Você possui " +
