@@ -2,8 +2,10 @@ var numeroSecreto = parseInt(Math.random() * 11);
 var tentativas = 3;
 
 function Chutar() {
+  var chute = parseInt(document.getElementById("valor").value);
+
   var elementoResultado = document.getElementById("resultado");
-  if (chute < 0 || chute > 10 || chute == "" || chute == undefined) {
+  if (chute < 0 || chute > 10 || isNaN(chute)) {
     elementoResultado.innerHTML = "Digite numeros de 0 a 10";
     console.log("Digite numeros de 0 a 10!"); 
     return;
@@ -12,7 +14,7 @@ function Chutar() {
   tentativas--;
 
   if (tentativas > 0) {
-    var chute = parseInt(document.getElementById("valor").value);
+    
 
     if (chute == numeroSecreto) {
       elementoResultado.innerHTML = "Você Acertou!";
