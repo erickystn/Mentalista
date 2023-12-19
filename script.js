@@ -1,5 +1,7 @@
 var numeroSecreto = parseInt(Math.random() * 11);
+console.log(numeroSecreto);
 var tentativas = 3;
+var acertou = false;
 
 function Chutar() {
   var chute = parseInt(document.getElementById("valor").value);
@@ -7,41 +9,46 @@ function Chutar() {
   var elementoResultado = document.getElementById("resultado");
   if (chute < 0 || chute > 10 || isNaN(chute)) {
     elementoResultado.innerHTML = "Digite numeros de 0 a 10";
-    console.log("Digite numeros de 0 a 10!"); 
+    console.log("Digite numeros de 0 a 10!");
     return;
   }
-  
-  tentativas--;
 
-  if (tentativas > 0) {
+  if (tentativas >0) {
     
 
     if (chute == numeroSecreto) {
       elementoResultado.innerHTML = "Você Acertou!";
       console.log("Acertou!");
       tentativas = 0;
-    }else {
+      acertou = true;
+    } else {
       elementoResultado.innerHTML = "Você errou!";
-      
+
       if (chute < numeroSecreto) {
         elementoResultado.innerHTML =
           " Voce errou, numero é maior! <br> Você possui " +
-          (tentativas) +
+          (tentativas-1) +
           " tentativas restantes";
       } else {
         elementoResultado.innerHTML =
           "Voce errou, o numero é menor!<br> Você possui " +
-          (tentativas) +
+          (tentativas-1) +
           " tentativas restantes";
       }
     }
+    tentativas--;
+    if(tentativas == 0){
+      document.querySelector("#valor").setAttribute("disabled", "disabled");
+      document.getElementById("bouton").innerText="Ver Resposta";
+    }
     
   } else {
-    document.getElementById("bouton").setAttribute("disabled", "disabled");
-    elementoResultado.innerHTML =
-      "<br> <br>" +
-      "Numero de tentativas Excedidas" +
-      "<br> O numero era > " +
-      numeroSecreto;
+    if (!acertou) {
+      document.getElementById("bouton").setAttribute("disabled", "disabled");
+      elementoResultado.innerHTML =
+        "<br> <br>" +
+        "<br> O numero era > " +
+        numeroSecreto;
+    }
   }
 }
